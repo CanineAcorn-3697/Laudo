@@ -1,25 +1,1027 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Visualizador de PDF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ficha Médica de Emergência</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body,
-      html {
+      :root {
+        --coral: #ff6b6b;
+        --coral-light: #fff0f0;
+        --teal: #4ecdc4;
+        --teal-light: #e8fafa;
+        --yellow: #ffe66d;
+        --purple: #a78bfa;
+        --purple-light: #f3f0ff;
+        --green: #6bcb77;
+        --green-light: #edfaef;
+        --blue: #4d96ff;
+        --blue-light: #eef4ff;
+        --dark: #2d3436;
+        --mid: #636e72;
+        --light: #f8f9ff;
+        --white: #ffffff;
+        --border: #eaecf4;
+      }
+
+      * {
         margin: 0;
         padding: 0;
-        height: 100%;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        min-height: 100vh;
+      }
+
+      .top-banner {
+        background: linear-gradient(90deg, var(--coral) 0%, #ff8e53 100%);
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        font-family: "Fredoka One", cursive;
+        font-size: 16px;
+        letter-spacing: 1px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.35);
+      }
+
+      .heart-beat {
+        display: inline-block;
+        animation: heartbeat 1.2s infinite;
+        font-size: 20px;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        15% {
+          transform: scale(1.35);
+        }
+        30% {
+          transform: scale(1);
+        }
+        45% {
+          transform: scale(1.2);
+        }
+        60% {
+          transform: scale(1);
+        }
+      }
+
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f64f59 100%
+        );
+        padding: 50px 20px 60px;
+        text-align: center;
+        position: relative;
         overflow: hidden;
       }
-      iframe {
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+        animation: float 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      .photo-ring {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        padding: 4px;
+        background: linear-gradient(
+          135deg,
+          var(--yellow),
+          var(--teal),
+          var(--coral)
+        );
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .photo-inner {
         width: 100%;
         height: 100%;
-        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 56px;
+        border: 3px solid white;
+        overflow: hidden;
+      }
+
+      .photo-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .hero h1 {
+        font-family: "Fredoka One", cursive;
+        font-size: 34px;
+        color: white;
+        margin-bottom: 6px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero .birth {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .badge {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .badge.warn {
+        background: rgba(255, 230, 109, 0.3);
+        border-color: var(--yellow);
+        color: var(--yellow);
+      }
+
+      .wave {
+        display: block;
+        background: var(--light);
+        line-height: 0;
+      }
+
+      .main {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 10px 16px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: 24px;
+        border: 2px solid var(--border);
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      .card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .card:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .card:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.94) translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .card-header {
+        padding: 18px 22px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .card-icon.coral {
+        background: var(--coral-light);
+      }
+      .card-icon.teal {
+        background: var(--teal-light);
+      }
+      .card-icon.purple {
+        background: var(--purple-light);
+      }
+      .card-icon.green {
+        background: var(--green-light);
+      }
+      .card-icon.blue {
+        background: var(--blue-light);
+      }
+
+      .card-title {
+        font-family: "Fredoka One", cursive;
+        font-size: 20px;
+        color: var(--dark);
+        letter-spacing: 0.3px;
+      }
+
+      .card-divider {
+        height: 3px;
+        margin: 0 22px;
+        border-radius: 10px;
+      }
+
+      .div-coral {
+        background: linear-gradient(90deg, var(--coral), #ff8e53);
+      }
+      .div-teal {
+        background: linear-gradient(90deg, var(--teal), #44a8a1);
+      }
+      .div-purple {
+        background: linear-gradient(90deg, var(--purple), #8b5cf6);
+      }
+      .div-green {
+        background: linear-gradient(90deg, var(--green), #4caf50);
+      }
+      .div-blue {
+        background: linear-gradient(90deg, var(--blue), #2979ff);
+      }
+
+      .card-body {
+        padding: 20px 22px 22px;
+      }
+
+      .diag-name {
+        font-family: "Fredoka One", cursive;
+        font-size: 28px;
+        color: var(--coral);
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px 0;
+        border-bottom: 1.5px dashed var(--border);
+        font-size: 14px;
+        gap: 12px;
+      }
+
+      .info-row:last-child {
+        border-bottom: none;
+      }
+
+      .info-row .lbl {
+        color: var(--mid);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .info-row .val {
+        font-weight: 800;
+        text-align: right;
+        color: var(--dark);
+      }
+
+      .disease-text {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--mid);
+        font-weight: 600;
+      }
+
+      .alert-box {
+        margin-top: 14px;
+        background: linear-gradient(135deg, #fff9e6, #fff3cc);
+        border: 2px solid var(--yellow);
+        border-radius: 14px;
+        padding: 14px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #9a6c00;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        background: var(--light);
+        border-radius: 16px;
+        padding: 14px;
+        border: 2px solid var(--border);
+        transition: transform 0.2s;
+      }
+
+      .step:hover {
+        transform: translateX(4px);
+      }
+
+      .step-num {
+        min-width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fredoka One", cursive;
+        font-size: 18px;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .sn-1 {
+        background: linear-gradient(135deg, var(--coral), #ff8e53);
+      }
+      .sn-2 {
+        background: linear-gradient(135deg, var(--purple), #8b5cf6);
+      }
+      .sn-3 {
+        background: linear-gradient(135deg, var(--teal), #44a8a1);
+      }
+      .sn-4 {
+        background: linear-gradient(135deg, var(--blue), #2979ff);
+      }
+
+      .step-content strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 3px;
+      }
+
+      .step-content span {
+        font-size: 13px;
+        color: var(--mid);
+        font-weight: 600;
+      }
+
+      .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .contact {
+        background: var(--light);
+        border-radius: 18px;
+        border: 2px solid var(--border);
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .contact:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .contact.samu {
+        background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+        border-color: var(--coral);
+      }
+
+      .contact-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .contact-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .av-1 {
+        background: linear-gradient(135deg, #ffd6d6, #ffbaba);
+      }
+      .av-2 {
+        background: linear-gradient(135deg, #d6ebff, #bad8ff);
+      }
+      .av-3 {
+        background: linear-gradient(135deg, #d6ffe8, #baf2d0);
+      }
+      .av-4 {
+        background: linear-gradient(135deg, var(--coral), #ff8e53);
+      }
+
+      .contact-name {
+        font-weight: 800;
+        font-size: 15px;
+        color: var(--dark);
+        margin-bottom: 2px;
+      }
+
+      .contact-rel {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--mid);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .call-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-end;
+      }
+
+      .btn-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 9px 16px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+        color: white;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        white-space: nowrap;
+      }
+
+      .btn-call:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-coral {
+        background: linear-gradient(135deg, var(--coral), #ff8e53);
+      }
+      .btn-blue {
+        background: linear-gradient(135deg, var(--blue), #2979ff);
+      }
+      .btn-green {
+        background: linear-gradient(135deg, var(--green), #4caf50);
+      }
+
+      .laudo-paper {
+        background: linear-gradient(180deg, #fffef5 0%, #fffff8 100%);
+        border: 2px dashed #d4c88a;
+        border-radius: 16px;
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.85;
+        color: #4a4535;
+        white-space: pre-line;
+        font-weight: 600;
+        position: relative;
+      }
+
+      .laudo-paper::before {
+        content: "📄";
+        position: absolute;
+        top: -14px;
+        right: 20px;
+        font-size: 26px;
+        background: white;
+        padding: 0 6px;
+      }
+
+      .laudo-footer {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 2px dashed var(--border);
+        flex-wrap: wrap;
+      }
+
+      .laudo-chip {
+        background: var(--light);
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--mid);
+      }
+
+      .laudo-chip strong {
+        display: block;
+        font-size: 13px;
+        color: var(--dark);
+        margin-bottom: 1px;
+      }
+
+      footer {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 30px 20px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .footer-title {
+        font-family: "Fredoka One", cursive;
+        font-size: 18px;
+        color: white;
+        margin-bottom: 8px;
+      }
+
+      .emergency-nums {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+
+      .enum {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 6px 16px;
+        font-family: "Fredoka One", cursive;
+        font-size: 14px;
+        color: white;
+      }
+
+      @media (max-width: 500px) {
+        .hero h1 {
+          font-size: 26px;
+        }
+        .contact {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .call-btn {
+          flex-direction: row;
+          width: 100%;
+        }
+        .btn-call {
+          flex: 1;
+          justify-content: center;
+        }
+        .laudo-footer {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Substitua "seu-arquivo.pdf" pelo nome real do seu arquivo -->
-    <iframe src="relatorio_pedro.pdf"></iframe>
+    <div class="top-banner">
+      <span class="heart-beat"></span>
+      Ficha Médica de Emergência
+      <span class="heart-beat"></span>
+    </div>
+
+    <div class="hero">
+      <div
+        class="bubble"
+        style="
+          width: 80px;
+          height: 80px;
+          top: 10%;
+          left: 5%;
+          animation-delay: 0s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          width: 50px;
+          height: 50px;
+          top: 20%;
+          right: 8%;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          width: 100px;
+          height: 100px;
+          bottom: 5%;
+          left: 50%;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          width: 40px;
+          height: 40px;
+          top: 50%;
+          left: 20%;
+          animation-delay: 3s;
+        "
+      ></div>
+
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <!-- Para adicionar sua foto, substitua o emoji por:
+           <img src="sua_foto.jpg" alt="Foto"> -->
+          👤
+        </div>
+      </div>
+
+      <h1>Pedro Seabra Dornellas</h1>
+      <div class="birth">🧑 22 anos &nbsp;·&nbsp; 📍 Goiânia, GO</div>
+
+      <div class="badges">
+        <span class="badge">🧠 Síndrome de Tourette</span>
+        <span class="badge">⚡ TDAH · TOC · Ansiedade · Depressão</span>
+        <span class="badge warn">⚠️ Uso contínuo de medicação</span>
+      </div>
+    </div>
+
+    <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60">
+      <path fill="#F8F9FF" d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" />
+    </svg>
+
+    <div class="main">
+      <!-- DIAGNÓSTICO -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon coral">🏥</div>
+          <div class="card-title">Diagnóstico Principal</div>
+        </div>
+        <div class="card-divider div-coral"></div>
+        <div class="card-body">
+          <div class="diag-name">Síndrome de Tourette</div>
+          <div class="info-row">
+            <span class="lbl">📋 CID-10</span>
+            <span class="val">F95.2 – Síndrome de Tourette</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">⚡ Comorbidades</span>
+            <span class="val">TDAH · TOC · Ansiedade · Depressão</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">📅 Relatório emitido</span>
+            <span class="val">18/02/2026</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">👩‍⚕️ Médica responsável</span>
+            <span class="val">Dra. Lissa Carrilho Goulart — CRM 22625-GO</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🏥 Especialidade</span>
+            <span class="val">Neurocirurgia — RQE nº 17106</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">💊 Medicação contínua</span>
+            <span class="val">Aripiprazol · Sulpirida · Escitalopram</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🧠 Terapia</span>
+            <span class="val">Terapia Cognitivo Comportamental (TCC)</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🏨 Hospital de referência</span>
+            <span class="val"
+              >Pronto-Socorro Hospital Neurológico · (62) 3250-3100</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- SOBRE A DOENÇA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon teal">🔬</div>
+          <div class="card-title">Sobre a Doença</div>
+        </div>
+        <div class="card-divider div-teal"></div>
+        <div class="card-body">
+          <p class="disease-text">
+            A <strong style="color: var(--dark)">Síndrome de Tourette</strong> é
+            uma condição neurológica causada principalmente por acúmulo de
+            metais pesados tóxicos — especialmente mercúrio e cobre, com
+            vestígios de chumbo — que interferem na transmissão dos impulsos
+            elétricos no cérebro.
+          </p>
+          <p class="disease-text" style="margin-top: 12px">
+            Esses metais envolvem as sinapses cerebrais, criando um "gargalo"
+            nos canais de transmissão. Os impulsos elétricos ficam presos ou
+            atrasados e, ao serem empurrados para frente por impulsos
+            subsequentes, as informações que carregam (palavras, movimentos,
+            sons) escapam de forma incontrolável — antes que o paciente consiga
+            reter ou filtrar a resposta.
+          </p>
+          <p class="disease-text" style="margin-top: 12px">
+            Por isso, tiques motores e vocais (movimentos bruscos, sons,
+            palavras involuntárias) ocorrem de forma súbita e incontrolável. A
+            intensidade varia conforme a quantidade de metais acumulados e o
+            tamanho das vias entre os neurônios.
+          </p>
+          <div class="alert-box">
+            ⚠️
+            <span
+              >Condições que podem <strong>agravar os sintomas</strong>:
+              estresse, ansiedade e exposição ao frio. Em situações de crise,
+              mantenha o paciente calmo, em ambiente aquecido e longe de
+              estímulos intensos.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- EM CASO DE EMERGÊNCIA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon coral">🚨</div>
+          <div class="card-title">Em Caso de Emergência</div>
+        </div>
+        <div class="card-divider div-coral"></div>
+        <div class="card-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num sn-1">1</div>
+              <div class="step-content">
+                <strong>Ligue imediatamente para o SAMU — 192</strong>
+                <span
+                  >Informe que o paciente tem Síndrome de Tourette e apresente
+                  esta ficha.</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num sn-2">2</div>
+              <div class="step-content">
+                <strong>Não administre medicamentos sem orientação</strong>
+                <span
+                  >O paciente faz uso contínuo de medicação específica.</span
+                >
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num sn-3">3</div>
+              <div class="step-content">
+                <strong>Contate um familiar imediatamente</strong>
+                <span>Use os contatos de emergência listados abaixo.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num sn-4">4</div>
+              <div class="step-content">
+                <strong>Leve ao Pronto-Socorro do Hospital Neurológico</strong>
+                <span
+                  >Instituto de Neurologia de Goiânia — Praça Gilson Alves de
+                  Souza, 140, Setor Bueno · Tel: (62) 3250-3100</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTATOS DE EMERGÊNCIA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">📞</div>
+          <div class="card-title">Contatos de Emergência</div>
+        </div>
+        <div class="card-divider div-green"></div>
+        <div class="card-body">
+          <div class="contacts">
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-1">👩</div>
+                <div>
+                  <div class="contact-name">Mãe</div>
+                  <div class="contact-rel">Familiar · Contato Principal</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a class="btn-call btn-coral" href="tel:+5562981267343"
+                  >📞 (62)98126-7343</a
+                >
+              </div>
+            </div>
+
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-2">👨</div>
+                <div>
+                  <div class="contact-name">Pai</div>
+                  <div class="contact-rel">Familiar · Contato Secundário</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a class="btn-call btn-blue" href="tel:+5562981830900"
+                  >📞 (62)98183-0900</a
+                >
+              </div>
+            </div>
+
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-3">👨‍⚕️</div>
+                <div>
+                  <div class="contact-name">Dra. Lissa Carrilho Goulart</div>
+                  <div class="contact-rel">
+                    Neurocirurgiã · Médica Responsável
+                  </div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a class="btn-call btn-green" href="tel:+556232503100"
+                  >📞 (62) 3250-3100</a
+                >
+              </div>
+            </div>
+
+            <div class="contact samu">
+              <div class="contact-left">
+                <div class="contact-avatar av-4">🚑</div>
+                <div>
+                  <div class="contact-name" style="color: var(--coral)">
+                    SAMU — Emergência
+                  </div>
+                  <div class="contact-rel">Atendimento Nacional 24h</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a
+                  class="btn-call btn-coral"
+                  href="tel:192"
+                  style="font-size: 16px; padding: 11px 22px"
+                  >📞 192</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="contact"
+              style="
+                background: linear-gradient(135deg, #eef4ff, #dde8ff);
+                border-color: var(--blue);
+              "
+            >
+              <div class="contact-left">
+                <div
+                  class="contact-avatar"
+                  style="
+                    background: linear-gradient(135deg, #4d96ff, #2979ff);
+                    font-size: 22px;
+                  "
+                >
+                  🏥
+                </div>
+                <div>
+                  <div class="contact-name" style="color: var(--blue)">
+                    Hospital Neurológico
+                  </div>
+                  <div class="contact-rel">
+                    Pronto-Socorro · Referência do Paciente
+                  </div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a
+                  class="btn-call btn-blue"
+                  href="tel:+556232503100"
+                  style="font-size: 14px; padding: 10px 18px"
+                  >📞 (62) 3250-3100</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAUDO MÉDICO -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">📄</div>
+          <div class="card-title">Laudo Médico</div>
+        </div>
+        <div class="card-divider div-blue"></div>
+        <div class="card-body">
+          <div class="laudo-paper">
+            RELATÓRIO MÉDICO Instituto de Neurologia de Goiânia Paciente: Pedro
+            Seabra Dornellas Sexo: Masculino · Idade: 22 anos Diagnóstico
+            principal: Síndrome de Tourette (CID-10: F95.2) Comorbidades: TDAH,
+            Transtorno de Ansiedade, Transtorno Depressivo, TOC Paciente em
+            seguimento ambulatorial regular em neurologia funcional e
+            psiquiatria. Apresenta Síndrome de Tourette com início dos sintomas
+            na infância (antes dos 12 anos), com tics motores simples. Há
+            aproximadamente um ano evoluiu com tic vocal (assobio involuntário)
+            associado a tic motor em cintura escapular. Quadro de evolução
+            crônica com impacto funcional e psicossocial. Medicação contínua em
+            uso: aripiprazol, sulpirida, escitalopram. Realiza também terapia
+            cognitivo comportamental (TCC) regular. Orientações de urgência: Em
+            caso de crise clínica ou exacerbação aguda dos sintomas neurológicos
+            ou psiquiátricos, encaminhar imediatamente ao Pronto-Socorro do
+            Hospital Neurológico — (62) 3250-3100. Goiânia, GO — 18/02/2026 Dra.
+            Lissa Carrilho Goulart CRM: 22625-GO · Neurocirurgia — RQE nº 17106
+            Instituto de Neurologia de Goiânia
+          </div>
+          <div class="laudo-footer">
+            <div class="laudo-chip">
+              <strong>📅 Emitido em</strong>18/02/2026
+            </div>
+            <div class="laudo-chip">
+              <strong>👩‍⚕️ Médica</strong>Dra. Lissa Carrilho Goulart
+            </div>
+            <div class="laudo-chip"><strong>🩺 CRM</strong>22625-GO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-title">⚕️ Ficha Médica de Emergência</div>
+      <div>Este documento contém informações médicas confidenciais.</div>
+      <div class="emergency-nums">
+        <span class="enum">🚑 SAMU — 192</span>
+        <span class="enum">🚒 Bombeiros — 193</span>
+        <span class="enum">👮 Polícia — 190</span>
+      </div>
+    </footer>
   </body>
 </html>
