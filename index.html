@@ -1,303 +1,324 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha Médica — Pedro Seabra Dornellas</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ficha Médica — Pedro Seabra Dornellas</title>
 
-  <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Fontes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-banner">
+      <span class="heart-beat"></span>
+      Ficha Médica de Emergência
+      <span class="heart-beat"></span>
+    </div>
 
-  <div class="top-banner">
-    <span class="heart-beat"></span>
-    Ficha Médica de Emergência
-    <span class="heart-beat"></span>
-  </div>
+    <div class="hero">
+      <!-- Bolhas são criadas dinamicamente pelo main.js -->
 
-  <div class="hero">
-    <!-- Bolhas são criadas dinamicamente pelo main.js -->
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <img src="foto_site.jpeg" alt="Foto de Pedro" />
+        </div>
+      </div>
 
-    <div class="photo-ring">
-      <div class="photo-inner">
-             <img src="foto_site.jpeg" alt="Foto de Pedro"> 
+      <h1>Pedro Seabra Dornellas</h1>
+      <div class="birth">🧑 22 anos &nbsp;·&nbsp; 📍 Goiânia, GO</div>
+
+      <div class="badges">
+        <span class="badge">🧠 Síndrome de Tourette</span>
+        <span class="badge">⚡ TDAH · TOC · Ansiedade · Depressão</span>
+        <span class="badge warn">⚠️ Uso contínuo de medicação</span>
       </div>
     </div>
 
-    <h1>Pedro Seabra Dornellas</h1>
-    <div class="birth">🧑 22 anos &nbsp;·&nbsp; 📍 Goiânia, GO</div>
+    <!-- Onda decorativa -->
+    <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60">
+      <path fill="#F8F9FF" d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" />
+    </svg>
 
-    <div class="badges">
-      <span class="badge">🧠 Síndrome de Tourette</span>
-      <span class="badge">⚡ TDAH · TOC · Ansiedade · Depressão</span>
-      <span class="badge warn">⚠️ Uso contínuo de medicação</span>
-    </div>
-  </div>
+    <main class="main">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon coral">🏥</div>
+          <div class="card-title">Diagnóstico Principal</div>
+        </div>
+        <div class="card-divider div-coral"></div>
+        <div class="card-body">
+          <div class="diag-name">Síndrome de Tourette</div>
 
-  <!-- Onda decorativa -->
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60">
-    <path fill="#F8F9FF" d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z"/>
-  </svg>
-
-
-  <main class="main">
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon coral">🏥</div>
-        <div class="card-title">Diagnóstico Principal</div>
-      </div>
-      <div class="card-divider div-coral"></div>
-      <div class="card-body">
-        <div class="diag-name">Síndrome de Tourette</div>
-
-        <div class="info-row">
-          <span class="lbl">📋 CID-10</span>
-          <span class="val">F95.2 – Síndrome de Tourette</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">⚡ Comorbidades</span>
-          <span class="val">TDAH · TOC · Ansiedade · Depressão</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">📅 Relatório emitido</span>
-          <span class="val">18/02/2026</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">👩‍⚕️ Médica responsável</span>
-          <span class="val">Dra. Lissa Carrilho Goulart — CRM 22625-GO</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">🏥 Especialidade</span>
-          <span class="val">Neurocirurgia — RQE nº 17106</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">💊 Medicação contínua</span>
-          <span class="val">Aripiprazol · Sulpirida · Escitalopram</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">🧠 Terapia</span>
-          <span class="val">Terapia Cognitivo Comportamental (TCC)</span>
-        </div>
-        <div class="info-row">
-          <span class="lbl">🏨 Hospital de referência</span>
-          <span class="val">Pronto-Socorro Hospital Neurológico · (62) 3250-3100</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SOBRE A DOENÇA -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon teal">🔬</div>
-        <div class="card-title">Sobre a Doença</div>
-      </div>
-      <div class="card-divider div-teal"></div>
-      <div class="card-body">
-        <p class="disease-text">
-          A <strong style="color: var(--dark);">Síndrome de Tourette</strong> é uma condição neurológica causada principalmente por acúmulo de metais pesados tóxicos — especialmente mercúrio e cobre, com vestígios de chumbo — que interferem na transmissão dos impulsos elétricos no cérebro.
-        </p>
-        <p class="disease-text" style="margin-top: 12px;">
-          Esses metais envolvem as sinapses cerebrais, criando um "gargalo" nos canais de transmissão. Os impulsos elétricos ficam presos ou atrasados e, ao serem empurrados para frente por impulsos subsequentes, as informações que carregam (palavras, movimentos, sons) escapam de forma incontrolável — antes que o paciente consiga reter ou filtrar a resposta.
-        </p>
-        <p class="disease-text" style="margin-top: 12px;">
-          Por isso, tiques motores e vocais (movimentos bruscos, sons, palavras involuntárias) ocorrem de forma súbita e incontrolável. A intensidade varia conforme a quantidade de metais acumulados e o tamanho das vias entre os neurônios.
-        </p>
-        <div class="alert-box">
-          ⚠️ <span>Condições que podem <strong>agravar os sintomas</strong>: estresse, ansiedade e exposição ao frio. Em situações de crise, mantenha o paciente calmo, em ambiente aquecido e longe de estímulos intensos.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- EM CASO DE EMERGÊNCIA -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon coral">🚨</div>
-        <div class="card-title">Em Caso de Emergência</div>
-      </div>
-      <div class="card-divider div-coral"></div>
-      <div class="card-body">
-        <div class="steps">
-          <div class="step">
-            <div class="step-num sn-1">1</div>
-            <div class="step-content">
-              <strong>Ligue imediatamente para o SAMU — 192</strong>
-              <span>Informe que o paciente tem Síndrome de Tourette e apresente esta ficha.</span>
-            </div>
+          <div class="info-row">
+            <span class="lbl">📋 CID-10</span>
+            <span class="val">F95.2 – Síndrome de Tourette</span>
           </div>
-          <div class="step">
-            <div class="step-num sn-2">2</div>
-            <div class="step-content">
-              <strong>Não administre medicamentos sem orientação</strong>
-              <span>O paciente faz uso contínuo de medicação específica: aripiprazol, sulpirida e escitalopram.</span>
-            </div>
+          <div class="info-row">
+            <span class="lbl">⚡ Comorbidades</span>
+            <span class="val">TDAH · TOC · Ansiedade · Depressão</span>
           </div>
-          <div class="step">
-            <div class="step-num sn-3">3</div>
-            <div class="step-content">
-              <strong>Contate um familiar imediatamente</strong>
-              <span>Use os contatos de emergência listados abaixo.</span>
-            </div>
+          <div class="info-row">
+            <span class="lbl">📅 Relatório emitido</span>
+            <span class="val">18/02/2026</span>
           </div>
-          <div class="step">
-            <div class="step-num sn-4">4</div>
-            <div class="step-content">
-              <strong>Leve ao Pronto-Socorro do Hospital Neurológico</strong>
-              <span>Instituto de Neurologia de Goiânia — Praça Gilson Alves de Souza, 140, Setor Bueno · Tel: (62) 3250-3100</span>
-            </div>
+          <div class="info-row">
+            <span class="lbl">👩‍⚕️ Médica responsável</span>
+            <span class="val">Dra. Lissa Carrilho Goulart — CRM 22625-GO</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🏥 Especialidade</span>
+            <span class="val">Neurocirurgia — RQE nº 17106</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">💊 Medicação contínua</span>
+            <span class="val">Aripiprazol · Sulpirida · Escitalopram</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🧠 Terapia</span>
+            <span class="val">Terapia Cognitivo Comportamental (TCC)</span>
+          </div>
+          <div class="info-row">
+            <span class="lbl">🏨 Hospital de referência</span>
+            <span class="val"
+              >Pronto-Socorro Hospital Neurológico · (62) 3250-3100</span
+            >
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- CONTATOS DE EMERGÊNCIA -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon green">📞</div>
-        <div class="card-title">Contatos de Emergência</div>
+      <!-- SOBRE A DOENÇA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon teal">🔬</div>
+          <div class="card-title">Sobre a Doença</div>
+        </div>
+        <div class="card-divider div-teal"></div>
+        <div class="card-body">
+          <p class="disease-text">
+            A <strong style="color: var(--dark)">Síndrome de Tourette</strong> é
+            uma condição neurológica causada principalmente por acúmulo de
+            metais pesados tóxicos — especialmente mercúrio e cobre, com
+            vestígios de chumbo — que interferem na transmissão dos impulsos
+            elétricos no cérebro.
+          </p>
+          <p class="disease-text" style="margin-top: 12px">
+            Esses metais envolvem as sinapses cerebrais, criando um "gargalo"
+            nos canais de transmissão. Os impulsos elétricos ficam presos ou
+            atrasados e, ao serem empurrados para frente por impulsos
+            subsequentes, as informações que carregam (palavras, movimentos,
+            sons) escapam de forma incontrolável — antes que o paciente consiga
+            reter ou filtrar a resposta.
+          </p>
+          <p class="disease-text" style="margin-top: 12px">
+            Por isso, tiques motores e vocais (movimentos bruscos, sons,
+            palavras involuntárias) ocorrem de forma súbita e incontrolável. A
+            intensidade varia conforme a quantidade de metais acumulados e o
+            tamanho das vias entre os neurônios.
+          </p>
+          <div class="alert-box">
+            ⚠️
+            <span
+              >Condições que podem <strong>agravar os sintomas</strong>:
+              estresse, ansiedade e exposição ao frio. Em situações de crise,
+              mantenha o paciente calmo, em ambiente aquecido e longe de
+              estímulos intensos.</span
+            >
+          </div>
+        </div>
       </div>
-      <div class="card-divider div-green"></div>
-      <div class="card-body">
-        <div class="contacts">
 
-          <!-- Familiar 1 — edite nome e número -->
-          <div class="contact">
-            <div class="contact-left">
-              <div class="contact-avatar av-1">👩</div>
-              <div>
-                <div class="contact-name">Mãe</div>
-                <div class="contact-rel">Familiar · Contato Principal</div>
+      <!-- EM CASO DE EMERGÊNCIA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon coral">🚨</div>
+          <div class="card-title">Em Caso de Emergência</div>
+        </div>
+        <div class="card-divider div-coral"></div>
+        <div class="card-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num sn-1">1</div>
+              <div class="step-content">
+                <strong>Ligue imediatamente para o SAMU — 192</strong>
+                <span
+                  >Informe que o paciente tem Síndrome de Tourette e apresente
+                  esta ficha.</span
+                >
               </div>
             </div>
-            <div class="call-btn">
-              <a class="btn-call btn-coral" href="tel:+5562981267343" data-placeholder>📞 (62) 98126-7343</a>
-            </div>
-          </div>
-
-          <div class="contact">
-            <div class="contact-left">
-              <div class="contact-avatar av-2">👨</div>
-              <div>
-                <div class="contact-name">Pai</div>
-                <div class="contact-rel">Familiar · Contato Secundário</div>
+            <div class="step">
+              <div class="step-num sn-2">2</div>
+              <div class="step-content">
+                <strong>Não administre medicamentos sem orientação</strong>
+                <span
+                  >O paciente faz uso contínuo de medicação específica:
+                  aripiprazol, sulpirida e escitalopram.</span
+                >
               </div>
             </div>
-            <div class="call-btn">
-              <a class="btn-call btn-blue" href="tel:+5562981830900" data-placeholder>📞 (62) 98183-0900</a>
-            </div>
-          </div>
-
-          <!-- Médica -->
-          <div class="contact">
-            <div class="contact-left">
-              <div class="contact-avatar av-3">👩‍⚕️</div>
-              <div>
-                <div class="contact-name">Dra. Lissa Carrilho Goulart</div>
-                <div class="contact-rel">Neurocirurgiã · Médica Responsável</div>
+            <div class="step">
+              <div class="step-num sn-3">3</div>
+              <div class="step-content">
+                <strong>Contate um familiar imediatamente</strong>
+                <span>Use os contatos de emergência listados abaixo.</span>
               </div>
             </div>
-            <div class="call-btn">
-              <a class="btn-call btn-green" href="tel:+556232503100">📞 (62) 3250-3100</a>
-            </div>
-          </div>
-
-          <!-- SAMU -->
-          <div class="contact samu">
-            <div class="contact-left">
-              <div class="contact-avatar av-4">🚑</div>
-              <div>
-                <div class="contact-name coral">SAMU — Emergência</div>
-                <div class="contact-rel">Atendimento Nacional 24h</div>
+            <div class="step">
+              <div class="step-num sn-4">4</div>
+              <div class="step-content">
+                <strong>Leve ao Pronto-Socorro do Hospital Neurológico</strong>
+                <span
+                  >Instituto de Neurologia de Goiânia — Praça Gilson Alves de
+                  Souza, 140, Setor Bueno · Tel: (62) 3250-3100</span
+                >
               </div>
             </div>
-            <div class="call-btn">
-              <a class="btn-call btn-coral large" href="tel:192">📞 192</a>
-            </div>
           </div>
-
-          <!-- Hospital Neurológico -->
-          <div class="contact hospital">
-            <div class="contact-left">
-              <div class="contact-avatar av-5">🏥</div>
-              <div>
-                <div class="contact-name blue">Hospital Neurológico</div>
-                <div class="contact-rel">Pronto-Socorro · Referência do Paciente</div>
-              </div>
-            </div>
-            <div class="call-btn">
-              <a class="btn-call btn-blue" href="tel:+556232503100">📞 (62) 3250-3100</a>
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon blue">📄</div>
-        <div class="card-title">Laudo Médico</div>
-      </div>
-      <div class="card-divider div-blue"></div>
-      <div class="card-body">
-        <div class="laudo-paper">
-RELATÓRIO MÉDICO
-Instituto de Neurologia de Goiânia
-
-Paciente: Pedro Seabra Dornellas
-Sexo: Masculino · Idade: 22 anos
-
-Diagnóstico principal: Síndrome de Tourette (CID-10: F95.2)
-Comorbidades: TDAH, Transtorno de Ansiedade, Transtorno Depressivo, TOC
-
-Paciente em seguimento ambulatorial regular em neurologia funcional e
-psiquiatria. Apresenta Síndrome de Tourette com início dos sintomas na
-infância (antes dos 12 anos), com tics motores simples. Há aproximadamente
-um ano evoluiu com tic vocal (assobio involuntário) associado a tic motor
-em cintura escapular. Quadro de evolução crônica com impacto funcional
-e psicossocial.
-
-Medicação contínua em uso: aripiprazol, sulpirida, escitalopram.
-Realiza também terapia cognitivo comportamental (TCC) regular.
-
-Orientações de urgência: Em caso de crise clínica ou exacerbação aguda dos
-sintomas neurológicos ou psiquiátricos, encaminhar imediatamente ao
-Pronto-Socorro do Hospital Neurológico — (62) 3250-3100.
-
-Goiânia, GO — 18/02/2026
-
-Dra. Lissa Carrilho Goulart
-CRM: 22625-GO · Neurocirurgia — RQE nº 17106
-Instituto de Neurologia de Goiânia
+      <!-- CONTATOS DE EMERGÊNCIA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon green">📞</div>
+          <div class="card-title">Contatos de Emergência</div>
         </div>
+        <div class="card-divider div-green"></div>
+        <div class="card-body">
+          <div class="contacts">
+            <!-- Familiar 1 — edite nome e número -->
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-1">👩</div>
+                <div>
+                  <div class="contact-name">Flávia</div>
+                  <div class="contact-rel">Familiar · Contato Principal</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a
+                  class="btn-call btn-coral"
+                  href="tel:+5562981267343"
+                  data-placeholder
+                  >📞 (62) 98126-7343</a
+                >
+              </div>
+            </div>
 
-        <div class="laudo-footer">
-          <div class="laudo-chip"><strong>📅 Emitido em</strong>18/02/2026</div>
-          <div class="laudo-chip"><strong>👩‍⚕️ Médica</strong>Dra. Lissa Carrilho Goulart</div>
-          <div class="laudo-chip"><strong>🩺 CRM</strong>22625-GO</div>
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-2">👨</div>
+                <div>
+                  <div class="contact-name">Paulo</div>
+                  <div class="contact-rel">Familiar · Contato Secundário</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a
+                  class="btn-call btn-blue"
+                  href="tel:+5562981830900"
+                  data-placeholder
+                  >📞 (62) 98183-0900</a
+                >
+              </div>
+            </div>
+
+            <!-- Médica -->
+            <!--
+            <div class="contact">
+              <div class="contact-left">
+                <div class="contact-avatar av-3">👩‍⚕️</div>
+                <div>
+                  <div class="contact-name">Dra. Lissa Carrilho Goulart</div>
+                  <div class="contact-rel">Neurocirurgiã · Médica Responsável</div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a class="btn-call btn-green" href="tel:+556232503100">📞 (62) 3250-3100</a>
+              </div>
+            </div>
+            -->
+
+            <!-- Hospital Neurológico -->
+            <div class="contact hospital">
+              <div class="contact-left">
+                <div class="contact-avatar av-5">🏥</div>
+                <div>
+                  <div class="contact-name blue">Hospital Neurológico</div>
+                  <div class="contact-rel">
+                    Pronto-Socorro · Referência do Paciente
+                  </div>
+                </div>
+              </div>
+              <div class="call-btn">
+                <a class="btn-call btn-blue" href="tel:+556232503100"
+                  >📞 (62) 3250-3100</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </main>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue">📄</div>
+          <div class="card-title">Laudo Médico</div>
+        </div>
+        <div class="card-divider div-blue"></div>
+        <div class="card-body">
+          <div class="laudo-paper">
+            RELATÓRIO MÉDICO Instituto de Neurologia de Goiânia Paciente: Pedro
+            Seabra Dornellas Sexo: Masculino · Idade: 22 anos Diagnóstico
+            principal: Síndrome de Tourette (CID-10: F95.2) Comorbidades: TDAH,
+            Transtorno de Ansiedade, Transtorno Depressivo, TOC Paciente em
+            seguimento ambulatorial regular em neurologia funcional e
+            psiquiatria. Apresenta Síndrome de Tourette com início dos sintomas
+            na infância (antes dos 12 anos), com tics motores simples. Há
+            aproximadamente um ano evoluiu com tic vocal (assobio involuntário)
+            associado a tic motor em cintura escapular. Quadro de evolução
+            crônica com impacto funcional e psicossocial. Medicação contínua em
+            uso: aripiprazol, sulpirida, escitalopram. Realiza também terapia
+            cognitivo comportamental (TCC) regular. Orientações de urgência: Em
+            caso de crise clínica ou exacerbação aguda dos sintomas neurológicos
+            ou psiquiátricos, encaminhar imediatamente ao Pronto-Socorro do
+            Hospital Neurológico — (62) 3250-3100. Goiânia, GO — 18/02/2026 Dra.
+            Lissa Carrilho Goulart CRM: 22625-GO · Neurocirurgia — RQE nº 17106
+            Instituto de Neurologia de Goiânia
+          </div>
 
-  <footer>
-    <div class="footer-title">⚕️ Ficha Médica de Emergência</div>
-    <div>Este documento contém informações médicas confidenciais.</div>
-    <div class="emergency-nums">
-      <span class="enum">🚑 SAMU — 192</span>
-      <span class="enum">🚒 Bombeiros — 193</span>
-      <span class="enum">👮 Polícia — 190</span>
-    </div>
-   
-  </footer>
+          <div class="laudo-footer">
+            <div class="laudo-chip">
+              <strong>📅 Emitido em</strong>18/02/2026
+            </div>
+            <div class="laudo-chip">
+              <strong>👩‍⚕️ Médica</strong>Dra. Lissa Carrilho Goulart
+            </div>
+            <div class="laudo-chip"><strong>🩺 CRM</strong>22625-GO</div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <!-- Scripts -->
-  <script src="main.js"></script>
+    <!--
+      <footer>
+        <div class="footer-title">⚕️ Ficha Médica de Emergência</div>
+        <div>Este documento contém informações médicas confidenciais.</div>
+      <div class="emergency-nums">
+        <span class="enum">🚑 SAMU — 192</span>
+        <span class="enum">🚒 Bombeiros — 193</span>
+        <span class="enum">👮 Polícia — 190</span>
+      </div>
+    </footer>
+    -->
 
-</body>
+    <!-- Scripts -->
+    <script src="main.js"></script>
+  </body>
 </html>
